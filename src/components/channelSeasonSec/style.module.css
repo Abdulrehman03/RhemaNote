@@ -1,0 +1,123 @@
+.sideDiv {
+  width: 100%;
+  margin: 6px 0;
+}
+.headingTop {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 39px;
+  /* identical to box height */
+  text-transform: capitalize;
+
+  /* Dark */
+
+  color: #2c3c4d;
+}
+.boxChannel {
+  background: #fff;
+  padding: 1rem 1rem;
+  box-shadow: 0.5px 1.5px 0.5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 8px;
+}
+.boxChannelTwo {
+  background: #fff;
+  padding: 0.5rem 1rem;
+  margin: 0 0 1rem;
+  box-shadow: 0.5px 1.5px 0.5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 8px;
+}
+.headingTopBox {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height */
+
+  margin-block-start: 0;
+  margin-block-end: 0;
+  color: #2c3c4d;
+}
+.textBox {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 6px 0;
+  margin-block-start: 0.5em;
+  margin-block-end: 0;
+  line-height: 16px;
+  /* identical to box height, or 114% */
+
+  /* Gray */
+
+  color: #647d94;
+}
+.greenText {
+  color: #008080;
+}
+
+.smallText {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+}
+.smallText>img {
+  vertical-align:middle
+}
+
+.sideDivButton {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.loadMoreButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sideDivButton Button {
+  position: static;
+  width: 122px;
+  height: 40px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #008080;
+  border: 1px solid #008080;
+}
+
+.loadMoreButton Button {
+    position: static; 
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff; 
+    background: #008080;
+    border-radius: 10px;
+  }
+
+.channelText {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  line-height: 16px;
+  padding: 0 1rem;
+  /* identical to box height, or 114% */
+
+  /* Gray */
+
+  color: #2c3c4d;
+}

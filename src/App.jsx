@@ -1,22 +1,19 @@
-import * as React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ThemeProvider, styled } from '@mui/material/styles';
-import Landing from './Pages/Landing';
-import Concept from './Pages/Concept';
-import './App.css';
-import theme from './theme';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Landing from "./Pages/Landing/";
+import SearchProvider from "./context/Verse";
+import "./App.css";
 
-const App = () => {
-    return (
-        <ThemeProvider theme={theme}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Landing />} />
-                    <Route path="concept" element={<Concept />} />
-                </Routes>
-            </BrowserRouter>
-        </ThemeProvider>
-    );
-};
+function App() {
+  return (
+    <SearchProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+        </Routes>
+      </BrowserRouter>
+    </SearchProvider>
+  );
+}
 
 export default App;

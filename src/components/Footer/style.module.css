@@ -1,0 +1,56 @@
+.TopNode {
+  background-color: #2c3c4d;
+}
+
+.parent {
+  height: 300px;
+}
+.mobileParent {
+  height: 270;
+  width: 100%;
+  text-align: center;
+}
+.solo {
+  color: #c1c1c1;
+  margin: 0px;
+  padding-left: 1rem;
+}
+.logoImage {
+  color: #c1c1c1;
+  margin: 0px;
+  padding-left: 0.5rem;
+}
+.icons {
+  margin: 0px;
+  padding-left: 1rem;
+  display: flex;
+  max-width: 200px;
+  justify-content: space-between;
+}
+.inutField {
+  margin-top: 10px;
+  padding-left: 1rem;
+}
+
+.heading {
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  color: white;
+  padding-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.subscribe {
+  color: white;
+  padding-left: 1rem;
+}
+.contact {
+  color: #c1c1c1;
+  margin: 0px;
+  padding-left: 1rem;
+}
+.sideDiv {
+  width: 100%;
+}
