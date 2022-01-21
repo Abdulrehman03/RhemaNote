@@ -14,7 +14,7 @@ import twiter from "../../Assets/twiter.png";
 
 const Footer = () => {
   const matches = useMediaQuery("(max-width:470px)");
-  console.log(matches, "true");
+
   return (
     <div className={classes.TopNode}>
       <Container>

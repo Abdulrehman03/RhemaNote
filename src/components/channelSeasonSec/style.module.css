@@ -15,6 +15,9 @@
 
   color: #2c3c4d;
 }
+.anchor{
+   text-decoration: none !important;
+}
 .boxChannel {
   background: #fff;
   padding: 1rem 1rem;

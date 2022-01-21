@@ -44,6 +44,7 @@ const ChannelSeasonSec = () => {
         title: item.data.title,
         createdDate: item.data.date_published,
         verse: item.data?.verse,
+        url : item.data.link,
         time,
       };
     });
@@ -174,7 +175,8 @@ const ChannelSeasonSec = () => {
                         sm={8}
                         lg={9}
                         xm={12}
-                        display={"flex"}o0
+                        display={"flex"}
+                        o0
                         justifyContent={"center"}
                         flexDirection={"column"}
                         // className={matches ? classes.mobileParent : classes.parent}
@@ -290,9 +292,11 @@ const ChannelSeasonSec = () => {
                         flexDirection={"column"}
                         // className={matches ? classes.mobileParent : classes.parent}
                       >
-                        <div className={classes.sideDivButton}>
-                          <button>View</button>
-                        </div>
+                        <a href={item.url} target="_blank" className={classes.anchor}>
+                          <div className={classes.sideDivButton}>
+                            <button>View</button>
+                          </div>
+                        </a>
                       </Grid>
                     </Grid>
                   </div>
@@ -441,9 +445,11 @@ const ChannelSeasonSec = () => {
                           flexDirection={"column"}
                           // className={matches ? classes.mobileParent : classes.parent}
                         >
-                          <div className={classes.sideDivButton}>
-                            <button>View</button>
-                          </div>
+                          <a href={item.url} target="_blank" className={classes.anchor}>
+                            <div className={classes.sideDivButton}>
+                              <button>View</button>
+                            </div>
+                          </a>
                         </Grid>
                       </Grid>
                     </div>

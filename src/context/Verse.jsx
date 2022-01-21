@@ -33,7 +33,7 @@ const VerseContextData = ({ children }) => {
       let filterList = dummyData.responseItems.filter((item) => {
         return item.data.channel_id === channel;
       });
-      console.log(filterList, "sasasas");
+     
       if (filterList.length) {
         let verseArray = filterList.map((item) => {
           let date = new Date(item.timestamp).toDateString();
@@ -43,21 +43,23 @@ const VerseContextData = ({ children }) => {
           return {
             title: item.data.title,
             date_published: item.data.date_published,
+            url: item.data.link,
             timestamp: item.timestamp,
             date,
             time,
           };
         });
         // setChannel(channelData.name);
+        console.log(verseArray,"urll")
         listItem = verseArray.map((item, index) => {
           let date = new Date(item.timestamp).toDateString();
           let time = new Date(item.timestamp)
             .toLocaleTimeString()
             .split(" ")[0];
-
           return {
             title: item.title,
             date_published: item.date_published,
+            url: item.url,
             date,
             time,
           };
@@ -106,6 +108,7 @@ const VerseContextData = ({ children }) => {
             title: item.data.title,
             date_published: item.data.date_published,
             channel: channelData?.name,
+            url : item.data.link,
             date,
             time,
           };
@@ -138,6 +141,7 @@ const VerseContextData = ({ children }) => {
           return {
             title: item.data.title,
             date_published: item.data.date_published,
+            url: item.data.link,
             channel: dummyChannelList.channels.find((data) => {
               return data.id === item.data.channel_id;
             }),
@@ -147,6 +151,7 @@ const VerseContextData = ({ children }) => {
           };
         });
         // setChannel(channelData.name);
+        console.log(verseArray,"linkkk")
         listItem = verseArray.map((item, index) => {
           let date = new Date(item.timestamp).toDateString();
           let time = new Date(item.timestamp)
@@ -157,6 +162,8 @@ const VerseContextData = ({ children }) => {
             title: item.title,
             date_published: item.date_published,
             channel: item.channel.name,
+            url: item.url,
+
             date,
             time,
           };
@@ -175,6 +182,7 @@ const VerseContextData = ({ children }) => {
       }
     }
   };
+
 
   return (
     <VerseContext.Provider
