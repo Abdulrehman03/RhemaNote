@@ -22,10 +22,12 @@ const Playlist = () => {
       <Container>
         {/* <br/> */}
         <h1 className={classes.headingTop}>
-          {storeData.playList.length && (
+          {storeData.playList.length ? (
             <span className={classes.greenText}>
               {storeData.playList.length} &nbsp;Result {storeData.inputVerse}
             </span>
+          ) : (
+            <div></div>
           )}
         </h1>
         {/* <p className={classes.result}>

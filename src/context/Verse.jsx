@@ -20,6 +20,9 @@ const VerseContextData = ({ children }) => {
   const setInputVerse = (value) => {
     setInput(value);
   };
+  const setInputChannel = (value) => {
+    setChannel(value);
+  };
 
   const setSearchDetail = (channel, verse) => {
     let channelData;
@@ -30,6 +33,7 @@ const VerseContextData = ({ children }) => {
       let filterList = dummyData.responseItems.filter((item) => {
         return item.data.channel_id === channel;
       });
+      console.log(filterList, "sasasas");
       if (filterList.length) {
         let verseArray = filterList.map((item) => {
           let date = new Date(item.timestamp).toDateString();
@@ -63,6 +67,16 @@ const VerseContextData = ({ children }) => {
         setStore({
           ...storeData,
           playList: [...listItem],
+          verse,
+          channel,
+          search: true,
+        });
+      } else if (filterList.length === 0) {
+        setShowCard(true);
+        setFound(true);
+        setStore({
+          ...storeData,
+          playList: [],
           verse,
           channel,
           search: true,
@@ -169,6 +183,7 @@ const VerseContextData = ({ children }) => {
         setSearchDetail,
         setStore,
         setInputVerse,
+        setInputChannel,
         channel,
         found,
         input,
