@@ -19,6 +19,13 @@ import { VerseContext } from "../../context/Verse";
 
 const ChannelSeasonSec = () => {
   const matches = useMediaQuery("(max-width:470px)");
+  const [verses, setVerses] = useState([]);
+  const [load, setLoad] = useState(4);
+  const loadMoreFunc = () => {
+    let loadMore = load + 4;
+    setLoad(loadMore);
+  };
+
   const {
     storeData,
     channel: CHANNEL,
@@ -26,7 +33,6 @@ const ChannelSeasonSec = () => {
     input: inputVerse,
   } = React.useContext(VerseContext);
 
-  const [verses, setVerses] = useState([]);
   React.useEffect(() => {
     let listItem = list.responseItems.map((item, index) => {
       // let date = new Date(item.timestamp).toDateString();
@@ -37,12 +43,13 @@ const ChannelSeasonSec = () => {
         }),
         title: item.data.title,
         createdDate: item.data.date_published,
+        verse: item.data?.verse,
         time,
       };
     });
     setVerses([...listItem]);
   }, []);
-  console.log(storeData.search, "Ssasassass");
+
   return (
     <div className={classes.TopNode}>
       {storeData.search ? (
@@ -167,7 +174,7 @@ const ChannelSeasonSec = () => {
                         sm={8}
                         lg={9}
                         xm={12}
-                        display={"flex"}
+                        display={"flex"}o0
                         justifyContent={"center"}
                         flexDirection={"column"}
                         // className={matches ? classes.mobileParent : classes.parent}
@@ -184,9 +191,9 @@ const ChannelSeasonSec = () => {
                               alignItems="flex-start"
                               style={{ padding: "0px" }}
                             >
-                              <ListItemAvatar style={{ width: 85 }}>
+                              <ListItemAvatar style={{ width: 105 }}>
                                 <Avatar
-                                  style={{ width: 65, height: 65 }}
+                                  style={{ width: 90, height: 90 }}
                                   alt="Remy Sharp"
                                   src={imges}
                                 />
@@ -238,6 +245,7 @@ const ChannelSeasonSec = () => {
                                         style={{
                                           background: "rgba(0, 128, 128, 0.08)",
                                           padding: "5px 8px",
+                                          borderRadius: 5,
                                         }}
                                       >
                                         {item.date_published}
@@ -247,6 +255,7 @@ const ChannelSeasonSec = () => {
                                         style={{
                                           background: "#00808014",
                                           padding: "5px 8px",
+                                          borderRadius: 5,
                                         }}
                                       >
                                         {" "}
@@ -256,6 +265,8 @@ const ChannelSeasonSec = () => {
                                         style={{
                                           background: "#00808014",
                                           padding: "5px 8px",
+                                          borderRadius: 5,
+                                          marginLeft: "5px",
                                         }}
                                       >
                                         {" "}
@@ -280,7 +291,7 @@ const ChannelSeasonSec = () => {
                         // className={matches ? classes.mobileParent : classes.parent}
                       >
                         <div className={classes.sideDivButton}>
-                          <Button variant="outlined">View</Button>
+                          <button>View</button>
                         </div>
                       </Grid>
                     </Grid>
@@ -288,9 +299,9 @@ const ChannelSeasonSec = () => {
                 );
               })}
             <div className={classes.loadMoreButton}>
-              {/* <Button variant="contained">
+              {/* <button>
               <i className="fa fa-spin"></i> Load More
-            </Button> */}
+            </button> */}
             </div>
           </Container>
         ) : (
@@ -301,131 +312,153 @@ const ChannelSeasonSec = () => {
       ) : (
         <div>
           {verses.length &&
-            verses.map((item) => {
+            verses.map((item, index) => {
               return (
-                <div className={classes.boxChannelTwo}>
-                  <Grid container>
-                    <Grid
-                      item
-                      md={9}
-                      sm={8}
-                      lg={9}
-                      xm={12}
-                      display={"flex"}
-                      justifyContent={"center"}
-                      flexDirection={"column"}
-                      // className={matches ? classes.mobileParent : classes.parent}
-                    >
-                      <div className={classes.sideDiv}>
-                        <List
-                          sx={{
-                            width: "100%",
-                            maxWidth: 560,
-                            bgcolor: "background.paper",
-                          }}
+                index < load && (
+                  <Container>
+                    <div className={classes.boxChannelTwo}>
+                      <Grid container>
+                        <Grid
+                          item
+                          md={9}
+                          sm={8}
+                          lg={9}
+                          xm={12}
+                          display={"flex"}
+                          justifyContent={"center"}
+                          flexDirection={"column"}
+                          // className={matches ? classes.mobileParent : classes.parent}
                         >
-                          <ListItem
-                            alignItems="flex-start"
-                            style={{ padding: "0px" }}
-                          >
-                            <ListItemAvatar style={{ width: 85 }}>
-                              <Avatar
-                                style={{ width: 65, height: 65 }}
-                                alt="Remy Sharp"
-                                src={imges}
-                              />
-                            </ListItemAvatar>
-                            <ListItemText
-                              primary={
-                                <span
-                                  style={{
-                                    fontFamily: "Inter",
-                                    fontSize: "20px",
-                                    fontStyle: "normal",
-                                    fontWeight: "700",
-                                    lineHeight: "24px",
-                                    letterSpacing: "0em",
-                                    textSlign: "left",
-                                  }}
-                                >
-                                  {item.title}
-                                </span>
-                              }
-                              secondary={
-                                <React.Fragment>
-                                  <Typography
-                                    variant="body2"
-                                    style={{
-                                      fontFamily: "Inter",
-                                      fontStyle: "normal",
-                                      fontWeight: "600",
-                                      fontSize: "14px",
-                                      marginBottom: "8px",
-                                    }}
-                                  >
-                                    {item?.channel?.name}
-                                    <img
-                                      src={check}
-                                      style={{
-                                        verticalAlign: "middle",
-                                        paddingLeft: "4px",
-                                      }}
-                                    />
-                                  </Typography>
-                                  <Typography
-                                    component="span"
-                                    variant="body2"
-                                    color="text.primary"
-                                    style={{ lineHeight: "2" }}
-                                  >
+                          <div className={classes.sideDiv}>
+                            <List
+                              sx={{
+                                width: "100%",
+                                maxWidth: 560,
+                                bgcolor: "background.paper",
+                              }}
+                            >
+                              <ListItem
+                                alignItems="flex-start"
+                                style={{ padding: "0px" }}
+                              >
+                                <ListItemAvatar style={{ width: 105 }}>
+                                  <Avatar
+                                    style={{ width: 90, height: 90 }}
+                                    alt="Remy Sharp"
+                                    src={imges}
+                                  />
+                                </ListItemAvatar>
+                                <ListItemText
+                                  primary={
                                     <span
                                       style={{
-                                        background: "rgba(0, 128, 128, 0.08)",
-                                        padding: "5px 8px",
+                                        fontFamily: "Inter",
+                                        fontSize: "20px",
+                                        fontStyle: "normal",
+                                        fontWeight: "700",
+                                        lineHeight: "24px",
+                                        letterSpacing: "0em",
+                                        textSlign: "left",
                                       }}
                                     >
-                                      {item.createdDate}
+                                      {item.title}
                                     </span>
-                                    &nbsp;
-                                    <span
-                                      style={{
-                                        background: "#00808014",
-                                        padding: "5px 8px",
-                                      }}
-                                    >
-                                      {" "}
-                                      {item.time}
-                                    </span>
-                                  </Typography>
-                                </React.Fragment>
-                              }
-                            />
-                          </ListItem>
-                        </List>
-                      </div>
-                    </Grid>
-                    <Grid
-                      item
-                      md={3}
-                      sm={6}
-                      xm={12}
-                      display={"flex"}
-                      justifyContent={"center"}
-                      flexDirection={"column"}
-                      // className={matches ? classes.mobileParent : classes.parent}
-                    >
-                      <div className={classes.sideDivButton}>
-                        <Button variant="outlined">View</Button>
-                      </div>
-                    </Grid>
-                  </Grid>
-                </div>
+                                  }
+                                  secondary={
+                                    <React.Fragment>
+                                      <Typography
+                                        variant="body2"
+                                        style={{
+                                          fontFamily: "Inter",
+                                          fontStyle: "normal",
+                                          fontWeight: "600",
+                                          fontSize: "14px",
+                                          marginBottom: "8px",
+                                        }}
+                                      >
+                                        {item?.channel?.name}
+                                        <img
+                                          src={check}
+                                          style={{
+                                            verticalAlign: "middle",
+                                            paddingLeft: "4px",
+                                          }}
+                                        />
+                                      </Typography>
+                                      <Typography
+                                        component="span"
+                                        variant="body2"
+                                        color="text.primary"
+                                        style={{ lineHeight: "2" }}
+                                      >
+                                        <span
+                                          style={{
+                                            background:
+                                              "rgba(0, 128, 128, 0.08)",
+                                            padding: "5px 8px",
+                                            borderRadius: 5,
+                                          }}
+                                        >
+                                          {item.createdDate}
+                                        </span>
+                                        &nbsp;
+                                        <span
+                                          style={{
+                                            background: "#00808014",
+                                            padding: "5px 8px",
+                                            borderRadius: 5,
+                                          }}
+                                        >
+                                          {" "}
+                                          {item.time}
+                                        </span>
+                                        <span
+                                          style={{
+                                            background: "#00808014",
+                                            padding: "5px 8px",
+                                            borderRadius: 5,
+                                            marginLeft: "5px",
+                                          }}
+                                        >
+                                          {" "}
+                                          {item?.verse}
+                                        </span>
+                                      </Typography>
+                                    </React.Fragment>
+                                  }
+                                />
+                              </ListItem>
+                            </List>
+                          </div>
+                        </Grid>
+                        <Grid
+                          item
+                          md={3}
+                          sm={6}
+                          xm={12}
+                          display={"flex"}
+                          justifyContent={"center"}
+                          flexDirection={"column"}
+                          // className={matches ? classes.mobileParent : classes.parent}
+                        >
+                          <div className={classes.sideDivButton}>
+                            <button>View</button>
+                          </div>
+                        </Grid>
+                      </Grid>
+                    </div>
+                  </Container>
+                )
               );
             })}
           <div className={classes.loadMoreButton}>
-            {/* <Button variant="contained">
+            <button
+              onClick={() => {
+                loadMoreFunc();
+              }}
+            >
               <i className="fa fa-spin"></i> Load More
-            </Button> */}
+            </button>
           </div>
         </div>
       )}

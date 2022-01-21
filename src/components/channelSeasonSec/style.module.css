@@ -66,8 +66,8 @@
   font-size: 14px;
   line-height: 16px;
 }
-.smallText>img {
-  vertical-align:middle
+.smallText > img {
+  vertical-align: middle;
 }
 
 .sideDivButton {
@@ -83,7 +83,7 @@
   align-items: center;
 }
 
-.sideDivButton Button {
+.sideDivButton button {
   position: static;
   width: 122px;
   height: 40px;
@@ -92,19 +92,24 @@
   font-weight: 500;
   font-size: 14px;
   color: #008080;
+  background-color: #ffff;
   border: 1px solid #008080;
 }
 
 .loadMoreButton Button {
-    position: static; 
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    color: #fff; 
-    background: #008080;
-    border-radius: 10px;
-  }
+  position: static;
+  width: 122px;
+  height: 40px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #008080;
+  border: 1px solid #008080;
+}
 
 .channelText {
   font-family: Inter;
